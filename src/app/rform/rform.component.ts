@@ -42,16 +42,18 @@ export class RformComponent implements OnInit {
     if(this.router.url==='/rform')
     
     {
+      let data=JSON.parse(localStorage.getItem("FormData"));
+      console.log(data);
       console.log("yes");
       this.reactform.patchValue({
-        firstname: 'Nancy',
-        lastname:'Priya',
-        contact:'8855326564',
-        Gender:'male',
-        EmpId:'1234',
-        Email:'hiamdn@gmail.com',
-        password:'himanshu',
-        checkpassword:'himasghu'
+        firstname: data.firstname,
+        lastname: data.lastname,
+        contact:data.contact,
+        Gender:data.Gender,
+        EmpId:data.EmpId,
+        Email:data.Email,
+        password:data.password,
+        checkpassword:data.checkpassword
       });
     }
     else

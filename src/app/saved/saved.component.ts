@@ -8,7 +8,12 @@ import {Router} from '@angular/router';
 })
 export class SavedComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  data:Object
+  constructor(private router: Router) {
+    this.data=JSON.parse(localStorage.getItem("FormData"));
+
+   }
+
 
   goback()
   {

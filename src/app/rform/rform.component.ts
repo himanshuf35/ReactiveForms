@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
 import {Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-rform',
@@ -8,6 +9,8 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./rform.component.css']
 })
 export class RformComponent implements OnInit {
+
+  constructor(private router : Router){}
 
   reactform:FormGroup=new FormGroup(
     {
@@ -27,10 +30,35 @@ export class RformComponent implements OnInit {
   save()
   {
     localStorage.setItem("FormData",JSON.stringify(this.reactform.value));
+    this.router.navigate(['/saved']);
+    
   }
-  constructor() { }
+
+
+  
 
   ngOnInit() {
+    
+    if(this.router.url==='/rform')
+    
+    {
+      console.log("yes");
+      this.reactform.patchValue({
+        firstname: 'Nancy',
+        lastname:'Priya',
+        contact:'8855326564',
+        Gender:'male',
+        EmpId:'1234',
+        Email:'hiamdn@gmail.com',
+        password:'himanshu',
+        checkpassword:'himasghu'
+      });
+    }
+    else
+    {
+      console.log("No");
+    }
+
   }
 
 }

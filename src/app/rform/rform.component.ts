@@ -21,6 +21,11 @@ export class RformComponent implements OnInit {
 
     }
   );
+
+  save()
+  {
+    localStorage.setItem("FormData",JSON.stringify(this.reactform.value));
+  }
   constructor() { }
 
   ngOnInit() {

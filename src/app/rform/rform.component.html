@@ -40,6 +40,6 @@
     <input type="password" formControlName="checkpassword">
   </label>
 
-  <button type="submit" [disabled]="!reactForm.valid">Submit</button>
+  <button type="submit" (click)="save()"[disabled]="!reactForm.valid">Submit</button>
 
 </form>

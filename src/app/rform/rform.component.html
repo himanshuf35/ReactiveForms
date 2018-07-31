@@ -1,0 +1,45 @@
+<form [formGroup]="reactForm">
+  
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <label>
+    Contact:
+    <input type="text" formControlName="contact">
+  </label>
+
+  <label>
+    Gender:
+    <input type="text" formControlName="Gender">
+  </label>
+
+  <label>
+    Emp_ID:
+    <input type="text" formControlName="EmpId">
+  </label>
+
+  <label>
+    E-mail:
+    <input type="email" formControlName="Email">
+  </label>
+
+  <label>
+    Password:
+    <input type="password" formControlName="password">
+  </label>
+
+  <label>
+    Check Password:
+    <input type="password" formControlName="checkpassword">
+  </label>
+
+  <button type="submit" [disabled]="!reactForm.valid">Submit</button>
+
+</form>

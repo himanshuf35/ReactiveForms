@@ -1,13 +1,13 @@
-<form [formGroup]="reactForm">
+<form [formGroup]="reactform">
   
   <label>
     First Name:
-    <input type="text" formControlName="firstName">
+    <input type="text" formControlName="firstname">
   </label>
 
   <label>
     Last Name:
-    <input type="text" formControlName="lastName">
+    <input type="text" formControlName="lastname">
   </label>
 
   <label>
@@ -40,6 +40,8 @@
     <input type="password" formControlName="checkpassword">
   </label>
 
-  <button type="submit" (click)="save()"[disabled]="!reactForm.valid">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!reactform.valid">
+    Submit
+  </button>
 
 </form>

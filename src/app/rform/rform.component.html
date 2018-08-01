@@ -38,7 +38,7 @@
   <label>
     Check Password:
     <input type="password" formControlName="checkpassword" (keyup)="PasswordCheck()">
-    <div id="warning" *ngIf="check">
+    <div id="warning" *ngIf="!check">
       Password doesn't match.
       </div>
   </label>

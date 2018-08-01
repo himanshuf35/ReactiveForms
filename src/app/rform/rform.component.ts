@@ -12,7 +12,7 @@ export class RformComponent implements OnInit {
   //reactForm:FormGroup;
 
   constructor(private router : Router){}
-  check:boolean=true;
+  check:boolean
   reactform=new FormGroup(
     {
       firstname:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),

@@ -94,8 +94,9 @@
 
     <label for="password"></label>
     Password:
-    <input type="password" id="password" formControlName="password">
-    
+    <input [type]=showPassword id="password" formControlName="password">
+    <button type="button" class="btn btn-default" id="eye" (click)="showPass()">
+    </button>
     <br>
     <div *ngIf="reactform.controls.password.invalid && (reactform.controls.password.dirty || reactform.controls.password.touched)"
     class="alert alert-danger">

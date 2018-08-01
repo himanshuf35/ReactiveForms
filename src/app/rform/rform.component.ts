@@ -16,6 +16,9 @@ export class RformComponent implements OnInit {
     
   }
   check:boolean
+  showPassword='password'
+  showEnable:boolean
+
   //data:Object
   reactform:FormGroup=new FormGroup(
     {
@@ -45,6 +48,18 @@ export class RformComponent implements OnInit {
     this.check=false;
     else
    this.check=true;
+    }
+    showPass(){
+      if(this.showEnable){
+        this.showPassword="text";
+        this.showEnable=false;
+      }
+  
+      else{
+        this.showPassword="password";
+        this.showEnable=true;
+      }
+      
     }
   
 

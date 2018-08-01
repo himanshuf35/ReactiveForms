@@ -9,10 +9,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./rform.component.css']
 })
 export class RformComponent implements OnInit {
+  //reactForm:FormGroup;
 
   constructor(private router : Router){}
-
-  reactform:FormGroup=new FormGroup(
+  check:boolean=true;
+  reactform=new FormGroup(
     {
       firstname:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
       lastname:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
@@ -20,8 +21,8 @@ export class RformComponent implements OnInit {
       Gender:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
       EmpId:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(4),Validators.pattern("^(([0-9]*)|(([0-9]*)\.([0-9]*)))$")]),
       Email:new FormControl('',[Validators.required,Validators.email]),
-      password:new FormControl('',[Validators.required]),
-      checkpassword:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
+      checkpassword:new FormControl('',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
       
 
     }
@@ -34,7 +35,12 @@ export class RformComponent implements OnInit {
     
   }
 
-
+  PasswordCheck(){
+    if(this.reactform.value.password!==this.reactform.value.checkpassword)
+    this.check=false;
+    else
+   this.check=true;
+    }
   
 
   ngOnInit() {

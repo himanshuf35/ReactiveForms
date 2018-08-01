@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class FormDataService {
 
-  formdata:Object
+  formdata;
 
   constructor() { }
   getData()

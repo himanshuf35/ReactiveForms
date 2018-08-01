@@ -57,6 +57,8 @@ export class RformComponent implements OnInit {
       let data=this.formdata.getData();
       console.log(data);
       console.log("yes");
+      if(data!=null)
+      
       this.reactform.patchValue({
         firstname: data.firstname,
         lastname: data.lastname,
@@ -67,6 +69,7 @@ export class RformComponent implements OnInit {
         password:data.password,
         checkpassword:data.checkpassword
       });
+    
     
     }
     else

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
 import {Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {FormDataService} from '../form-data.service'
 
 @Component({
   selector: 'app-rform',
@@ -11,13 +12,16 @@ import {Router} from '@angular/router';
 export class RformComponent implements OnInit {
   //reactForm:FormGroup;
 
-  constructor(private router : Router){}
+  constructor(private router : Router,private formdata:FormDataService){
+    
+  }
   check:boolean
-  reactform=new FormGroup(
+  //data:Object
+  reactform:FormGroup=new FormGroup(
     {
       firstname:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
       lastname:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
-      contact:new FormControl('',[Validators.required,Validators.pattern("^(([0-9]*)|(([0-9]*)\.([0-9]*)))$")]),
+      contact:new FormControl('',[Validators.required,Validators.pattern("^(([0-9]*)|(([0-9]*)\.([0-9]*)))")]),
       Gender:new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
       EmpId:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(4),Validators.pattern("^(([0-9]*)|(([0-9]*)\.([0-9]*)))$")]),
       Email:new FormControl('',[Validators.required,Validators.email]),
@@ -30,7 +34,8 @@ export class RformComponent implements OnInit {
 
   save()
   {
-    localStorage.setItem("FormData",JSON.stringify(this.reactform.value));
+    //localStorage.setItem("FormData",JSON.stringify(this.reactform.value));
+    this.formdata.setData(this.reactform.value);
     this.router.navigate(['/saved']);
     
   }
@@ -48,7 +53,8 @@ export class RformComponent implements OnInit {
     if(this.router.url==='/rform')
     
     {
-      let data=JSON.parse(localStorage.getItem("FormData"));
+      
+      let data=this.formdata.getData();
       console.log(data);
       console.log("yes");
       this.reactform.patchValue({
@@ -61,6 +67,7 @@ export class RformComponent implements OnInit {
         password:data.password,
         checkpassword:data.checkpassword
       });
+    
     }
     else
     {

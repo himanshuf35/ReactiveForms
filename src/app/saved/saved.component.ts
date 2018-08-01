@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {FormDataService} from '../form-data.service'
 
 @Component({
   selector: 'app-saved',
@@ -9,9 +10,10 @@ import {Router} from '@angular/router';
 export class SavedComponent implements OnInit {
 
   data:Object
-  constructor(private router: Router) {
-    this.data=JSON.parse(localStorage.getItem("FormData"));
-
+  constructor(private router: Router,private formdata:FormDataService) {
+    //this.data=JSON.parse(localStorage.getItem("FormData"));
+    this.data=this.formdata.getData();
+    console.log(this.data);
    }
 
 

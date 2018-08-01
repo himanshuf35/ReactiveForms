@@ -1,50 +1,125 @@
 <form [formGroup]="reactform">
+
+  <label for="firstName"></label>
+  First Name:
+  <input type="text" id="firstName" formControlName="firstname">
+  <div *ngIf="reactform.controls.firstname.invalid && (reactform.controls.firstname.dirty || reactform.controls.firstname.touched)"
+    class="alert alert-danger">
+
+    <div *ngIf="reactform.controls.firstname.errors.required">
+      First Name is required.
+    </div>
+    <div *ngIf="reactform.controls.firstname.errors.pattern">
+      Wrong Pattern.
+    </div>
+  </div>
+  <br>
+
+  <label for="lastname"></label>
+  Last Name:
+  <input type="text" id="lastname" formControlName="lastname">
+  <div *ngIf="reactform.controls.lastname.invalid && (reactform.controls.lastname.dirty || reactform.controls.lastname.touched)"
+    class="alert alert-danger">
+
+    <div *ngIf="reactform.controls.lastname.errors.required">
+      Last Name is required.
+    </div>
+    <div *ngIf="reactform.controls.lastname.errors.pattern">
+      Wrong Pattern.
+    </div>
+  </div>
+  <br>
+
+  <label for="contact"></label>
+  Contact:
+  <input type="text" id="contact" formControlName="contact" maxlength="10">
+  <div *ngIf="reactform.controls.contact.invalid && (reactform.controls.contact.dirty || reactform.controls.contact.touched)"
+    class="alert alert-danger">
+
+    <div *ngIf="reactform.controls.contact.errors.required">
+      Contact is required.
+    </div>
+  </div>
   
-  <label>
-    First Name:
-    <input type="text" formControlName="firstname">
-  </label>
+  <br>
 
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastname">
-  </label>
+  <label for="Gender"></label>
+  Gender:
+  <input type="text" id="Gender" formControlName="Gender">
+  <div *ngIf="reactform.controls.Gender.invalid && (reactform.controls.Gender.dirty || reactform.controls.Gender.touched)"
+    class="alert alert-danger">
 
-  <label>
-    Contact:
-    <input type="text" formControlName="contact">
-  </label>
+    <div *ngIf="reactform.controls.Gender.errors.required">
+      Gender is required.
+    </div>
+    <div *ngIf="reactform.controls.Gender.errors.pattern">
+      Wrong Pattern.
+    </div>
+  </div>
+  
+  <br>
 
-  <label>
-    Gender:
-    <input type="text" formControlName="Gender">
-  </label>
+  <label for="EmpId"></label>
+  Emp_ID:
+  <input type="text" id="EmpId" formControlName="EmpId">
+  <div *ngIf="reactform.controls.EmpId.invalid && (reactform.controls.EmpId.dirty || reactform.controls.EmpId.touched)"
+    class="alert alert-danger">
 
-  <label>
-    Emp_ID:
-    <input type="text" formControlName="EmpId">
-  </label>
+    <div *ngIf="reactform.controls.EmpId.errors.required">
+      Emp_ID is required.
+    </div>
+    <div *ngIf="reactform.controls.EmpId.errors.pattern">
+      Wrong Pattern.
+    </div>
+  </div>
+  
 
-  <label>
-    E-mail:
-    <input type="email" formControlName="Email">
-  </label>
+  <br>
 
-  <label>
+  <label for="Email"></label>
+  E-mail:
+  <input type="email" id="Email" formControlName="Email">
+  <div *ngIf="reactform.controls.Email.invalid && (reactform.controls.Email.dirty || reactform.controls.Email.touched)"
+    class="alert alert-danger">
+
+    <div *ngIf="reactform.controls.Email.errors.required">
+      E-mail is required.
+    </div>
+    <div *ngIf="reactform.controls.Email.errors.email">
+      Wrong Pattern.
+    </div>
+  </div>
+ 
+    <br>
+
+    <label for="password"></label>
     Password:
-    <input type="password" formControlName="password">
-  </label>
+    <input type="password" id="password" formControlName="password">
+    
+    <br>
+    <div *ngIf="reactform.controls.password.invalid && (reactform.controls.password.dirty || reactform.controls.password.touched)"
+    class="alert alert-danger">
 
-  <label>
+    <div *ngIf="reactform.controls.password.errors.required">
+      Password is required.
+    </div>
+    <div *ngIf="reactform.controls.password.errors.pattern">
+      Your password must contain an uppercase, a special character, a numerical value.
+    </div>
+  </div>
+
+    <label for="checkpassword"></label>
     Check Password:
-    <input type="password" formControlName="checkpassword" (keyup)="PasswordCheck()">
-    <div id="warning" *ngIf="!check">
-      Password doesn't match.
+    <input type="password" id="checkpassword" formControlName="checkpassword" (keyup)="PasswordCheck()">
+    <div *ngIf="(reactform.controls.checkpassword.dirty || reactform.controls.checkpassword.touched)">
+      <div id="warning" *ngIf="!check">
+        Password doesn't match.
       </div>
-  </label>
+    </div>
 
-  <button type="submit" (click)="save()" class="btn btn-primary" [disabled]="!reactform.valid">
-    Submit
-  </button>
+    <br>
+    <button type="submit" (click)="save()" class="btn btn-primary" [disabled]="!reactform.valid">
+      Submit
+    </button>
 
 </form>
